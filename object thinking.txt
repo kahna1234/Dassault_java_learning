@@ -1,0 +1,2 @@
+I made World class from where continent, country, state, finally district is created.
+tried something using constructor as well as passing as object.
