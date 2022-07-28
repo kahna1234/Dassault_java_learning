@@ -23,6 +23,10 @@ public class PhdAdmission {
 			newPh.cvUpload();
 			newPh.documentVarificationStarted();
 			newPh.varifying();
+			newPh.documentVarificationCompleted();
+//			System.out.println("---------Start of Interview Round---------");
+			newPh.technicalInterview();
+			newPh.hrInterview();
 		}
 		catch(BseException e)
 		{
@@ -40,8 +44,17 @@ public class PhdAdmission {
 		{
 			System.out.println("Problem: "+h.getMessage());
 		}
-		newPh.documentVarificationCompleted();
-	}
+		catch(TechnicalInterviewTest i)
+		{
+			System.out.println("Problem: "+i.getMessage());
+		}
+		catch(HRInterviewException j)
+		{
+			System.out.println("Problem: "+j.getMessage());
+		}
+		
+		
+	}	
 
 }
 
@@ -118,9 +131,32 @@ class Phd
 			 throw newMTech;
 		 }
 	 }
+		 void technicalInterview()
+		 {
+			 int ans = (int)(10*Math.random());
+			 System.out.println("Number of questions answered in Technical round "+ans);
+					 if(ans<6)
+					 {
+						 TechnicalInterviewTest newTech = new TechnicalInterviewTest("You have not successed the interview for technical");
+						 throw newTech;
+					 }
+		 }
+		 
+		 void hrInterview()
+		 {
+			 int ans1 = (int)(10*Math.random());
+			 System.out.println("Number of questions answered HR round is "+ans1);
+					 if(ans1<6)
+					 {
+						 HRInterviewException newTech1 = new HRInterviewException("You have not successed the interview for HR");
+						 throw newTech1;
+					 }
+		 }
+	 
 	 void documentVarificationCompleted()
 	 {
 		 System.out.println("Congratulaton for varifying document");
 	 }
+	 
 	
 }
